@@ -14,12 +14,12 @@ import threading
 #start of max30102 set up code#
 ###
 
-# # Get the current directory
-# current_dir = os.path.dirname(os.path.realpath(__file__))
+# Get the current directory
+current_dir = os.path.dirname(os.path.realpath(__file__))
 
-# # Walk through all subdirectories and add them to sys.path
-# for root, dirs, files in os.walk(current_dir):
-#     sys.path.append(root)
+# Walk through all subdirectories and add them to sys.path
+for root, dirs, files in os.walk(current_dir):
+    sys.path.append(root)
 
 from DFRobot_BloodOxygen_S import *
 import smbus
@@ -58,7 +58,6 @@ lcd_d7 = digitalio.DigitalInOut(board.D22)
 lcd_d6 = digitalio.DigitalInOut(board.D18)
 lcd_d5 = digitalio.DigitalInOut(board.D17)
 lcd_d4 = digitalio.DigitalInOut(board.D23)
-lcd_backlight = digitalio.DigitalInOut(board.D2)
 
 lcd_columns = 16
 lcd_rows = 2
@@ -69,7 +68,7 @@ def print_msg(string):
     lcd.message = string
 
 
-print_msg("hello world")
+lcd.clear()
 
 def max30102_print_to_lcd():
   max30102.get_heartbeat_SPO2()
